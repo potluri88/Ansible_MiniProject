@@ -1,0 +1,28 @@
+- name: apt-get update and then install git,curl,build-essential,npm
+  apt:
+    update_cache: yes
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - git 
+      - curl
+      - build-essential
+      - wget
+      - tar
+- name: create softlink for gtar
+  file:
+    src: /bin/tar
+    dest: /bin/gtar
+    state: link
+    
+- name : install go from repo https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz
+  unarchive:
+    src : https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz
+    remote_src: yes
+    dest: /usr/local
+    owner: root
+    group: root
+    mode : 0755 
+  
+
+ 

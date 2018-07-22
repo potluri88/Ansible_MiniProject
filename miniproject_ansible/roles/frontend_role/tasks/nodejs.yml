@@ -1,0 +1,11 @@
+- name: Download nodejs and install under /usr/local/bin/
+  unarchive:
+    src: https://nodejs.org/dist/v4.8.6/node-v4.8.6-linux-x64.tar.xz
+    remote_src: yes
+    dest: /usr/local/bin/node
+    
+- name : Create softlink for node as nodejs
+  file:
+    src: /usr/local/bin/node
+    dest: /usr/local/bin/nodejs
+    state: link

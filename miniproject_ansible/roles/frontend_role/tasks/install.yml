@@ -1,0 +1,22 @@
+- name: install and start the webapp.
+  npm:
+    path: /opt/frontend
+    state: present
+
+- name: deploy frontend start script to /etc/init.d
+  get_url:
+    url: https://raw.githubusercontent.com/udbc/front-end/master/scripts/frontend
+    dest: /etc/init.d
+    owner: root
+    group: root
+    mode: 0755
+    
+- name: Reload service frontend, in all cases
+  service:
+    name: frontend
+    state: reloaded
+    
+- name : start npm service
+  service:
+    name: frontend
+    state: started

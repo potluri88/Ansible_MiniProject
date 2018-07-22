@@ -1,0 +1,7 @@
+- name: deploy the webapp from git.
+  become: yes
+  become_user: devops
+  unarchive:
+    src: https://github.com/udbc/front-end/archive/1.0.1.tar.gz
+    remote_src: yes
+    dest: /opt/apps/frontend/releases

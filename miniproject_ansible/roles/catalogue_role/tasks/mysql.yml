@@ -1,0 +1,23 @@
+- name: Create a new database with name 'catalogue
+  mysql_db:
+    name: "{{ mysql_databases["name"]["2"] }}"
+    state: present
+    login_user: "{{  mysql_users.name }}"
+    login_password: "{{ mysql_users.password }}"
+  tags: mysql
+
+- name: Download the database dump file.
+  get_url:
+    url: https://raw.githubusercontent.com/udbc/catalogue/master/data/dump.sql
+    dest: "{{ mysql_dump_download }}"
+    mode: 0744
+  tags: mysql
+  
+- name: MySQL import from the dump.sql file.
+  mysql_db:
+    state: import
+    name: "{{ mysql_databases['name']['2'] }}"
+    login_host: "{{ }}"
+    login_user: "{{ mysql_users.name }}"
+    login_password: "{{ mysql_users.password }}"
+  tags: mysql

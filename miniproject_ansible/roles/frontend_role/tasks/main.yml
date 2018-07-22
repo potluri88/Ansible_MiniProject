@@ -1,0 +1,7 @@
+---
+# tasks file for frontend
+  - import_tasks: config.yml
+  - import_tasks: deploy.yml
+  - import_tasks: softlink.yml
+  - import_tasks: install.yml
+  #- import_tasks: sanity_check.yml

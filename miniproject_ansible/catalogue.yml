@@ -1,0 +1,8 @@
+--- 
+  - name : catalogue playbook
+    hosts: catalogue
+    become : true
+    roles : 
+      - catalogue_role
+    environment:
+      path: "$PATH:/usr/local/go"

@@ -1,0 +1,5 @@
+---
+# tasks file for catalogue
+  - import_tasks: system.yml
+  - import_tasks: mysql.yml
+    tags: mysql

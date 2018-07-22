@@ -1,0 +1,7 @@
+  - name : create soft link for a release directory
+    file:
+      src: /opt/apps/frontend/releases/front-end-1.0.1
+      dest: /opt/frontend
+      owner: devops
+      group: devops
+      state: link

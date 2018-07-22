@@ -1,0 +1,6 @@
+--- 
+  - name : playbook to configure mysql database.
+    hosts: catalogue
+    become : true
+    roles : 
+      - geerlingguy.mysql

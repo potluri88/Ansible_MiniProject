@@ -1,0 +1,6 @@
+--- 
+  - name : Front end playbook
+    hosts: frontend
+    become : true
+    roles : 
+      - frontend_role

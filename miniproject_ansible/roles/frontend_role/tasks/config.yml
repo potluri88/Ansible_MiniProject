@@ -1,0 +1,29 @@
+- name: apt-get update and then install git,curl,build-essential,npm
+  apt:
+    update_cache: yes
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - git 
+      - curl
+      - build-essential
+      - npm
+- name: install node
+  unarchive:
+    src: https://nodejs.org/dist/v4.8.6/node-v4.8.6-linux-x64.tar.xz
+    remote_src: yes
+    dest: /usr/local
+- name : create softlink for nodejs
+  file: 
+    src: /usr/local/node-v4.8.6-linux-x64/bin/node
+    dest: /usr/local/nodejs
+    state: link
+      
+- name : create application release directory
+  file:
+    name : /opt/apps/frontend/releases
+    state : directory
+    owner: devops
+    group: devops
+    mode: 0755
+    
